@@ -1,10 +1,10 @@
-﻿namespace AppHelloWorld
+﻿namespace AppHelloWorld.Views
 {
-    public partial class MainPage : ContentPage
+    public partial class CadastroView : ContentPage
     {
         public const double FontSize14 = 14;
 
-        public MainPage()
+        public CadastroView()
         {
             InitializeComponent();
         }
@@ -47,7 +47,7 @@
     {
         public object ProvideValue(IServiceProvider serviceProvider)
         {
-            return DeviceInfo.Platform == DevicePlatform.Android ? 18 : MainPage.FontSize14;
+            return DeviceInfo.Platform == DevicePlatform.Android ? 18 : CadastroView.FontSize14;
         }
     }
 }
