@@ -2,7 +2,7 @@
 {
     public partial class MainPage : ContentPage
     {
-        int count = 0;
+        public const double FontSize14 = 14;
 
         public MainPage()
         {
@@ -40,6 +40,14 @@
                 idade--;
             }
             return idade;
+        }
+    }
+
+    public class GlobalFontSizeExtension : IMarkupExtension
+    {
+        public object ProvideValue(IServiceProvider serviceProvider)
+        {
+            return MainPage.FontSize14;
         }
     }
 }

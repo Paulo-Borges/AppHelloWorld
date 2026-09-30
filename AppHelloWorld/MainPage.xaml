@@ -3,6 +3,7 @@
     x:Class="AppHelloWorld.MainPage"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:hello="clr-namespace:AppHelloWorld"
     Title="Cadastro">
 
     <ScrollView>
@@ -28,11 +29,12 @@
 
                     <Label
                         FontAttributes="Bold"
-                        FontSize="18"
+                        FontSize="{hello:GlobalFontSize}"
                         HorizontalOptions="Center"
                         Text="Faça o seu Contato AGORA mesmo!"
                         VerticalOptions="Center" />
                     <Label
+                        FontSize="{hello:GlobalFontSize}"
                         HorizontalOptions="Center"
                         HorizontalTextAlignment="Center"
                         VerticalOptions="Center"
@@ -41,12 +43,12 @@
                         <Label.FormattedText>
                             <FormattedString>
                                 <Span
-                                    FontSize="16"
+                                    FontSize="14"
                                     Text="Junte-se ao time do "
                                     TextColor="Black" />
                                 <Span
                                     FontAttributes="Bold"
-                                    FontSize="16"
+                                    FontSize="14"
                                     Text="Borges Dev "
                                     TextColor="Black" />
                             </FormattedString>
@@ -59,21 +61,21 @@
                     Orientation="Vertical"
                     VerticalOptions="Center">
                     <StackLayout Margin="0,10,0,0" WidthRequest="320">
-                        <Label Text="NomeCompleto" />
+                        <Label FontSize="{hello:GlobalFontSize}" Text="NomeCompleto" />
                         <Entry
                             x:Name="NomeCompleto"
                             Keyboard="Text"
                             Placeholder="Nome Completo" />
                     </StackLayout>
                     <StackLayout Margin="0,10,0,0" WidthRequest="320">
-                        <Label Text="Data de Nascimento" />
+                        <Label FontSize="{hello:GlobalFontSize}" Text="Data de Nascimento" />
                         <DatePicker
                             x:Name="DataNascimento"
                             DateSelected="DataNascimento_DateSelected"
                             Format="dd/mm/yyyy" />
                     </StackLayout>
                     <StackLayout Margin="0,10,0,0" WidthRequest="320">
-                        <Label Text="Genero" />
+                        <Label FontSize="{hello:GlobalFontSize}" Text="Genero" />
                         <Picker x:Name="Genero" Title="Selecione um gênero">
                             <Picker.ItemsSource>
                                 <x:Array Type="{x:Type x:String}">
@@ -86,7 +88,7 @@
 
                     </StackLayout>
                     <StackLayout Margin="0,10,0,30" WidthRequest="320">
-                        <Label Text="Idade" />
+                        <Label FontSize="{hello:GlobalFontSize}" Text="Idade" />
                         <Entry
                             x:Name="Idade"
                             IsEnabled="False"
@@ -99,6 +101,7 @@
                     <Button
                         x:Name="Cadastrar"
                         Clicked="Cadastrar_Clicked"
+                        FontSize="{hello:GlobalFontSize}"
                         Text="Cadastrar" />
                 </StackLayout>
             </Grid>
