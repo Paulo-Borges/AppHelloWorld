@@ -60,11 +60,17 @@
                     VerticalOptions="Center">
                     <StackLayout Margin="0,10,0,0" WidthRequest="320">
                         <Label Text="NomeCompleto" />
-                        <Entry x:Name="NomeCompleto" Keyboard="Text" Placeholder="Nome Completo" />
+                        <Entry
+                            x:Name="NomeCompleto"
+                            Keyboard="Text"
+                            Placeholder="Nome Completo" />
                     </StackLayout>
                     <StackLayout Margin="0,10,0,0" WidthRequest="320">
                         <Label Text="Data de Nascimento" />
-                        <DatePicker x:Name="DataNascimento" Format="dd/mm/yyyy" />
+                        <DatePicker
+                            x:Name="DataNascimento"
+                            DateSelected="DataNascimento_DateSelected"
+                            Format="dd/mm/yyyy" />
                     </StackLayout>
                     <StackLayout Margin="0,10,0,0" WidthRequest="320">
                         <Label Text="Genero" />
@@ -83,13 +89,17 @@
                         <Label Text="Idade" />
                         <Entry
                             x:Name="Idade"
+                            IsEnabled="False"
                             Keyboard="Numeric"
                             Placeholder="Idade" />
                     </StackLayout>
                 </StackLayout>
 
                 <StackLayout Grid.Row="2" WidthRequest="300">
-                    <Button x:Name="Cadastrar" Clicked="Cadastrar_Clicked" Text="Cadastrar" />
+                    <Button
+                        x:Name="Cadastrar"
+                        Clicked="Cadastrar_Clicked"
+                        Text="Cadastrar" />
                 </StackLayout>
             </Grid>
         </VerticalStackLayout>
