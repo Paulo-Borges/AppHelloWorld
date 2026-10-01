@@ -59,12 +59,15 @@
             Spacing="10"
             VerticalOptions="Center">
             <Button
+                x:Name="Registrar"
                 Background="Transparent"
                 BorderColor="White"
                 BorderWidth="1"
+                Clicked="Registrar_Clicked"
                 Text="Registrar"
                 WidthRequest="200" />
             <Button
+                x:Name="Logar"
                 Background="Transparent"
                 BorderColor="White"
                 BorderWidth="1"
