@@ -1,7 +1,9 @@
 ﻿namespace AppHelloWorld.Views
 {
+    [QueryProperty(nameof(Route), "route" )]
     public partial class CadastroView : ContentPage
     {
+        public string Route { get; set; }
         public const double FontSize14 = 14;
 
         public CadastroView()
@@ -9,14 +11,16 @@
             InitializeComponent();
         }
 
-        private void Cadastrar_Clicked(object sender, EventArgs e)
+        private async void Cadastrar_Clicked(object sender, EventArgs e)
         {
             var nome = NomeCompleto.Text;
             var data = DataNascimento.Date;
             var genero = Genero.SelectedItem;
             var idade = Idade.Text;
 
-            DisplayAlertAsync("Cadastro de Usuário", string.Format("Cadastro do usuario {0} foi realizado com SUCESSO!", nome), "Ok!");
+            await DisplayAlert("Cadastro de Usuário", string.Format("Cadastro do usuario {0} foi realizado com SUCESSO!", nome), "Ok!");
+
+            await Shell.Current.GoToAsync(Route);
         }
 
         private void DataNascimento_DateSelected(object sender, DateChangedEventArgs e)

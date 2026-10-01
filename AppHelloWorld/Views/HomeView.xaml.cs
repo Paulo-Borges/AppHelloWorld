@@ -9,10 +9,10 @@ public partial class HomeView : ContentPage
 
     private async void Registrar_Clicked(object sender, EventArgs e)
     {
-        await Shell.Current.GoToAsync("cadastro");
+        await Shell.Current.GoToAsync("cadastro?route=home");
     }
 
-    //private async Task Logar_Clicked(object sender, EventArgs e)
+    //private async void Logar_Clicked(object sender, EventArgs e)
     //{
     //    await Shell.Current.GoToAsync("home");
     //}
