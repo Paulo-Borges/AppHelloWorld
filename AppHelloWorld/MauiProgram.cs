@@ -1,4 +1,8 @@
-﻿using Microsoft.Extensions.Logging;
+﻿using AppHelloWorld.Services;
+using AppHelloWorld.Services.RequestProvider;
+using AppHelloWorld.Services.Users;
+using AppHelloWorld.Views;
+using Microsoft.Extensions.Logging;
 
 namespace AppHelloWorld
 {
@@ -13,13 +17,27 @@ namespace AppHelloWorld
                 {
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
-                });
+                }).RegisterAppService().RegisterViews();
 
 #if DEBUG
     		builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
+        }
+
+        public static MauiAppBuilder RegisterAppService(this MauiAppBuilder app)
+        {
+            app.Services.AddSingleton<IRequestProvider, RequestProvider>();
+            app.Services.AddSingleton<IUserService, UserService>();
+
+            return app;
+        }
+
+        public static MauiAppBuilder RegisterViews(this MauiAppBuilder app)
+        {
+            app.Services.AddTransient<CadastroView>();
+            return app;
         }
     }
 }

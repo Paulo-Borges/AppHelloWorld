@@ -1,24 +1,41 @@
-﻿namespace AppHelloWorld.Views
+﻿using AppHelloWorld.Models.Users;
+using AppHelloWorld.Services.Users;
+
+namespace AppHelloWorld.Views
 {
     [QueryProperty(nameof(Route), "route" )]
     public partial class CadastroView : ContentPage
     {
         public string Route { get; set; }
         public const double FontSize14 = 14;
+        public readonly IUserService _userService;
 
-        public CadastroView()
+        public CadastroView(IUserService userService)
         {
             InitializeComponent();
+            _userService = userService;
         }
 
         private async void Cadastrar_Clicked(object sender, EventArgs e)
         {
-            var nome = NomeCompleto.Text;
-            var data = DataNascimento.Date;
-            var genero = Genero.SelectedItem;
-            var idade = Idade.Text;
+            var user = new User();
+            var nome = NomeCompleto.Text.Split(' ');
 
-            await DisplayAlert("Cadastro de Usuário", string.Format("Cadastro do usuario {0} foi realizado com SUCESSO!", nome), "Ok!");
+            if(nome.Length > 0)
+            {
+                user.FirstName = nome.First();
+                if (nome.Length > 1)
+                    user.LastName = nome.Last();
+            }
+
+
+            user.BirthDate = DataNascimento.Date.ToString();
+            user.Gender = Genero.SelectedItem.ToString();
+            user.Age = Idade.Text;
+
+            var userResult = await _userService.Add(user);
+
+            await DisplayAlert("Cadastro de Usuário", string.Format("Cadastro do usuario {0} foi realizado com SUCESSO!", userResult.FirstName), "Ok!");
 
             await Shell.Current.GoToAsync(Route);
         }
